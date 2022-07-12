@@ -1,16 +1,17 @@
-package com.emit.engineapi.service.Impl;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+package com.emit.engineapi.service.impl;
 
 import com.emit.engineapi.model.Vehicle;
 import com.emit.engineapi.repository.VehicleRepository;
 import com.emit.engineapi.service.VehicleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class VehicleServiceImpl implements VehicleService {
 	
 	@Autowired

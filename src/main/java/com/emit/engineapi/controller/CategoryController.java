@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.emit.engineapi.dto.CategoryDto;
 import com.emit.engineapi.dto.mapper.CategoryMapper;
-import com.emit.engineapi.dto.mapper.Impl.CategoryMapperImpl;
+import com.emit.engineapi.dto.mapper.impl.CategoryMapperImpl;
 import com.emit.engineapi.service.CategoryService;
 
 @RequestMapping("/category")

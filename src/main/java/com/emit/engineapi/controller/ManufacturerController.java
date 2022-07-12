@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.emit.engineapi.dto.ManufacturerDto;
 import com.emit.engineapi.dto.mapper.ManufacturerMapper;
-import com.emit.engineapi.dto.mapper.Impl.ManufacturerMapperImpl;
+import com.emit.engineapi.dto.mapper.impl.ManufacturerMapperImpl;
 import com.emit.engineapi.service.ManufacturerService;
 
 @RequestMapping("/manufacturer")
