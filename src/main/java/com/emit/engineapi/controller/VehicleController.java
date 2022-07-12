@@ -1,7 +1,6 @@
 package com.emit.engineapi.controller;
 
 import com.emit.engineapi.dto.VehicleDto;
-import com.emit.engineapi.dto.mapper.impl.VehicleMapperImpl;
 import com.emit.engineapi.dto.mapper.VehicleMapper;
 import com.emit.engineapi.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +17,12 @@ public class VehicleController {
 
     private VehicleService vService;
 
-    private VehicleMapper mapper = new VehicleMapperImpl();
+    private VehicleMapper mapper;
 
     @Autowired
-    VehicleController(VehicleService vService) {
+    VehicleController(VehicleService vService, VehicleMapper vMapper) {
         this.vService = vService;
+        this.mapper = vMapper;
     }
 
     @GetMapping("/all-vehicles")

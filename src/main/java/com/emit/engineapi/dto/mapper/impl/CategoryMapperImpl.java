@@ -3,7 +3,9 @@ package com.emit.engineapi.dto.mapper.impl;
 import com.emit.engineapi.dto.CategoryDto;
 import com.emit.engineapi.dto.mapper.CategoryMapper;
 import com.emit.engineapi.model.Category;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CategoryMapperImpl implements CategoryMapper {
 
 	@Override

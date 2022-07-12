@@ -3,7 +3,9 @@ package com.emit.engineapi.dto.mapper.impl;
 import com.emit.engineapi.dto.ManufacturerDto;
 import com.emit.engineapi.dto.mapper.ManufacturerMapper;
 import com.emit.engineapi.model.Manufacturer;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ManufacturerMapperImpl implements ManufacturerMapper {
 
 	@Override
