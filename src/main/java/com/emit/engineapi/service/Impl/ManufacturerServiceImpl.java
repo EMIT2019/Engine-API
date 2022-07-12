@@ -1,40 +1,54 @@
 package com.emit.engineapi.service.Impl;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.emit.engineapi.model.Manufacturer;
+import com.emit.engineapi.repository.ManufacturerRepository;
 import com.emit.engineapi.service.ManufacturerService;
 
 public class ManufacturerServiceImpl implements ManufacturerService {
-
+	
+	@Autowired
+	private ManufacturerRepository mRepository;
+	
 	@Override
 	public List<Manufacturer> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return mRepository.findAll();
 	}
 
 	@Override
 	public Manufacturer getById(Long ID) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Manufacturer> manufacturer = mRepository.findById(ID);
+		if(manufacturer.isPresent()) {
+			return manufacturer.get();
+		}
+		throw new RuntimeException("The manufacturer with id "+ID+" does not exists");
 	}
 
 	@Override
 	public Manufacturer save(Manufacturer item) {
-		// TODO Auto-generated method stub
-		return null;
+		return mRepository.save(item);
 	}
 
 	@Override
 	public Manufacturer update(Manufacturer item) {
-		// TODO Auto-generated method stub
-		return null;
+		return mRepository.save(item);
 	}
 
 	@Override
 	public void delete(Long ID) {
-		// TODO Auto-generated method stub
-		
+		mRepository.deleteById(ID);
+	}
+
+	@Override
+	public List<Manufacturer> getPage(int pageNumber, int pageSize) {
+		Pageable page = PageRequest.of(pageNumber, pageSize);
+		return mRepository.findAll(page).getContent();
 	}
 
 

@@ -1,40 +1,54 @@
 package com.emit.engineapi.service.Impl;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.emit.engineapi.model.Category;
+import com.emit.engineapi.repository.CategoryRepository;
 import com.emit.engineapi.service.CategoryService;
 
 public class CategoryServiceImpl implements CategoryService {
 
+	@Autowired
+	private CategoryRepository cRepository; 
+	
 	@Override
 	public List<Category> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return cRepository.findAll();
 	}
 
 	@Override
 	public Category getById(Long ID) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Category> category = cRepository.findById(ID);
+		if(category.isPresent()) {
+			return category.get();
+		}
+		throw new RuntimeException("The category with the id "+ID+" does not exists");
 	}
 
 	@Override
 	public Category save(Category item) {
-		// TODO Auto-generated method stub
-		return null;
+		return cRepository.save(item);
 	}
 
 	@Override
 	public Category update(Category item) {
-		// TODO Auto-generated method stub
-		return null;
+		return cRepository.save(item);
 	}
 
 	@Override
 	public void delete(Long ID) {
-		// TODO Auto-generated method stub
-		
+		cRepository.deleteById(ID);
+	}
+
+	@Override
+	public List<Category> getPage(int pageNumber, int pageSize) {
+		Pageable page = PageRequest.of(pageNumber, pageSize);
+		return cRepository.findAll(page).getContent();
 	}
 
 }
